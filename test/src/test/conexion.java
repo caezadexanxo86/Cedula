@@ -20,7 +20,7 @@ public class conexion {
     public static Connection getConexion(){
         
     
-    String url ="jdbc:sqlserver://192.168.1.9\\desarrollo:1433;databaseName=cab_lirquen";
+    String url ="jdbc:sqlserver://192.168.0.2\\desarrollo:1433;databaseName=cab_lirquen";
     try {
       Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
          
@@ -40,6 +40,7 @@ public class conexion {
     
     public static ResultSet Consulta(String consulta){
         Connection con = getConexion();
+        
         Statement declara;
         try{
             declara = con.createStatement();

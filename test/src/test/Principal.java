@@ -16,8 +16,16 @@ import javax.swing.JOptionPane;
  * @author pi
  */
 public class Principal extends javax.swing.JFrame {
-
-    
+String hour ="" ;
+String date = "";
+String nombre ="";
+String apellido = "";
+String rut="";
+String movimiento ="Entrada";
+String ip = "192.168.0.2";        
+String empresa = "Puerto Lirquen S.A";
+String rutempresa = "96959030-1";
+String id = "";
 java.util.Calendar calendario; 
 int dia, mes, año, hora, minutos, segundos; 
 private javax.swing.JLabel label;   
@@ -52,6 +60,11 @@ private javax.swing.JLabel label;
         setAlwaysOnTop(true);
         setBackground(new java.awt.Color(51, 102, 255));
         setUndecorated(true);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                open(evt);
+            }
+        });
 
         btnSalida.setLabel("SALIDA");
         btnSalida.addActionListener(new java.awt.event.ActionListener() {
@@ -74,6 +87,7 @@ private javax.swing.JLabel label;
             }
         });
 
+        jTextField1.setUI(null);
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
@@ -185,6 +199,7 @@ private javax.swing.JLabel label;
        btnSalida.setSelected(false);
        
        lbleventosel.setText("0");
+       jTextField1.requestFocus();
         
         
     }//GEN-LAST:event_btnEntradaActionPerformed
@@ -230,7 +245,8 @@ return validacion;
      
          char letra;
          letra = evt.getKeyChar();
-       if (Character.isLetter(letra)) {
+         letra = Character.toUpperCase(letra);
+       if (Character.isLetter(letra) && letra!='K') {
            evt.consume();
            
        }    
@@ -257,6 +273,9 @@ return validacion;
                 
              jTextField1.setText(rutaux);
              recupera_datos();
+             jTextField1.setText("");
+             jTextField1.requestFocus();
+             
              
         }
 //         if(evt.getKeyCode()==java.awt.event.KeyEvent.VK_ENTER){
@@ -280,6 +299,7 @@ setDefaultCloseOperation(Principal.EXIT_ON_CLOSE);
        btnEntrada.setSelected(false);
        btnSalida.setSelected(false);
        lbleventosel.setText("5");
+        jTextField1.requestFocus();
         
                // TODO add your handling code here:
     }//GEN-LAST:event_btnColacionActionPerformed
@@ -288,19 +308,50 @@ setDefaultCloseOperation(Principal.EXIT_ON_CLOSE);
     btnEntrada.setSelected(false);
        btnColacion.setSelected(false);
        lbleventosel.setText("1");
-            // TODO add your handling code here:
+ jTextField1.requestFocus();
+        
+       // TODO add your handling code here:
     }//GEN-LAST:event_btnSalidaActionPerformed
+
+    private void open(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_open
+        // TODO add your handling code here:
+        btnSalida.setSelected(true);
+        jTextField1.requestFocus();
+        lbleventosel.setText("1");
+        
+    }//GEN-LAST:event_open
  
     public void recupera_datos(){
                 ResultSet respuesta;
-                String rut="";
-                
+         
         try{
         rut = jTextField1.getText();
-        respuesta=conexion.Consulta("select db_id,db_nombre from empleado where db_rut like '%" +rut+ "%'");
+        respuesta=conexion.Consulta("select db_rut,db_id,db_nombre,db_apellido from empleado where db_rut like '%" +rut+ "%'");
         while(respuesta.next()){ 
               lbl_nombre.setText(respuesta.getString("db_nombre"));
               lbl_id.setText(respuesta.getString("db_id"));
+              
+nombre =  respuesta.getString("db_nombre");
+apellido  =respuesta.getString("db_apellido");
+rut=respuesta.getString("db_rut"); 
+id= respuesta.getString("db_id");
+movimiento =lbleventosel.getText();
+String hash1= "";
+String hash2="";
+hash1= ip + movimiento + date + hour;
+hash2 = hash.getHash(hash1,"MD5");
+
+
+JOptionPane.showMessageDialog(null, "Nombre:"+ nombre + " Apellido:" + apellido + "<br> Rut:"+rut+"<br>id:"+id+" <br>fecha:"+date+" Hora:"+hour+"<br>Hash:"+hash2);
+
+
+//
+//String ip = "192.168.0.2";        
+//String empresa = "Puerto Lirquen S.A";
+//String rutempresa = "96959030-1";
+//
+              
+              
         }
         
         
@@ -324,8 +375,8 @@ año = calendario.get(Calendar.YEAR);
 hora = calendario.get(Calendar.HOUR_OF_DAY); 
 minutos = calendario.get(Calendar.MINUTE); 
 segundos = calendario.get(Calendar.SECOND); 
-String hour = String.format("%02d : %02d : %02d", hora, minutos, segundos); 
-String date = String.format("%02d / %02d / %02d", dia, mes, año); 
+ hour = String.format("%02d : %02d : %02d", hora, minutos, segundos); 
+ date = String.format("%02d / %02d / %02d", dia, mes, año); 
 labelreloj.setText("<html><center>" + hour + "<br>" + date); 
    } 
 }); 

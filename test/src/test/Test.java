@@ -5,6 +5,12 @@
  */
 package test;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
+
 /**
  *
  * @author pi
@@ -19,9 +25,17 @@ public class Test {
        
         Principal v= new Principal();
         
-        v.setVisible(true);
+  
+   try {
+          //  UIManager.setLookAndFeel("com.jtattoo.plaf.aluminium.AluminiumLookAndFeel");//aluminium.AluminiumLookAndFeel  //hifi.HiFiLookAndFeel //noire.NoireLookAndFeel  //acryl.AcrylLookAndFeel //graphite.GraphiteLookAndFeel  //texture.TextureLookAndFeel //luna.LunaLookAndFeel //smart.SmartLookAndFeel //mint.MintLookAndFeel //mcwin.McWinLookAndFeel
+        UIManager.setLookAndFeel(
+            UIManager.getCrossPlatformLookAndFeelClassName());
+        
+            v.setVisible(true);
 v.setExtendedState(6);
-
+   } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
+           JOptionPane.showMessageDialog(null, "No Entra"); 
+        }
 //
 //reloj r = new reloj();
 //r.setVisible(true);
