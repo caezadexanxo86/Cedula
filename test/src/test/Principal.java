@@ -26,6 +26,7 @@ String ip = "192.168.0.2";
 String empresa = "Puerto Lirquen S.A";
 String rutempresa = "96959030-1";
 String id = "";
+String reloj ="1";
 java.util.Calendar calendario; 
 int dia, mes, año, hora, minutos, segundos; 
 private javax.swing.JLabel label;   
@@ -47,19 +48,18 @@ private javax.swing.JLabel label;
         btnEntrada = new javax.swing.JToggleButton();
         btnColacion = new javax.swing.JToggleButton();
         jTextField1 = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        lbl_nombre = new javax.swing.JLabel();
-        lbl_id = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        labelreloj = new javax.swing.JLabel();
         lbleventosel = new javax.swing.JLabel();
+        labelreloj = new javax.swing.JLabel();
+        lblMensaje = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAlwaysOnTop(true);
         setBackground(new java.awt.Color(51, 102, 255));
         setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(1364, 768));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 open(evt);
@@ -99,16 +99,6 @@ private javax.swing.JLabel label;
             }
         });
 
-        jLabel1.setText("RUT");
-
-        jLabel2.setText("Nombre:");
-
-        jLabel3.setText("ID:");
-
-        lbl_nombre.setText("nombre");
-
-        lbl_id.setText("id");
-
         jButton1.setLabel("Salir");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -116,10 +106,21 @@ private javax.swing.JLabel label;
             }
         });
 
-        labelreloj.setFont(new java.awt.Font("DejaVu Sans", 0, 18)); // NOI18N
+        lbleventosel.setText("Evento");
+
+        labelreloj.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 36)); // NOI18N
         labelreloj.setText("jLabel4");
 
-        lbleventosel.setText("Evento");
+        lblMensaje.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        jLabel1.setText("jLabel1");
+
+        jButton2.setText("jButton2");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -127,67 +128,66 @@ private javax.swing.JLabel label;
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(21, 21, 21)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(btnEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(btnColacion, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(48, 48, 48)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jLabel2)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(lbl_nombre))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jLabel3)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(lbl_id))
-                                            .addComponent(jLabel1)))
-                                    .addComponent(lbleventosel)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(152, 152, 152)
-                                .addComponent(labelreloj)))
-                        .addGap(0, 46, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addGap(21, 21, 21)
+                        .addComponent(lbleventosel))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGap(200, 200, 200)
+                        .addComponent(btnColacion, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 922, Short.MAX_VALUE)
+                        .addComponent(jButton1)
+                        .addGap(37, 37, 37))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(127, 127, 127)
+                        .addComponent(jButton2)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblMensaje)
+                        .addGap(47, 47, 47)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(192, 192, 192))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(labelreloj, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(474, 474, 474))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addComponent(labelreloj)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnColacion, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(lbl_nombre))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(lbl_id))))
-                .addGap(30, 30, 30)
-                .addComponent(btnSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(lbleventosel))
-                .addContainerGap())
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnColacion, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(129, 129, 129)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 119, Short.MAX_VALUE)
+                        .addComponent(labelreloj, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(38, 38, 38)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel1)
+                                .addComponent(jButton2))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblMensaje)
+                                .addGap(4, 4, 4)
+                                .addComponent(btnEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(61, 61, 61)
+                                .addComponent(lbleventosel)))))
+                .addContainerGap(177, Short.MAX_VALUE))
         );
 
         pack();
@@ -199,14 +199,17 @@ private javax.swing.JLabel label;
        btnSalida.setSelected(false);
        
        lbleventosel.setText("0");
-       jTextField1.requestFocus();
+    //   jTextField1.requestFocus();
+        try{
+            conexion.getConexion();
+        }catch(Exception e){
+            
+        }finally{
+            conexion.cierra();
+        }
         
-        
+    
     }//GEN-LAST:event_btnEntradaActionPerformed
-
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
        String rutaux="";
        
        
@@ -237,58 +240,6 @@ return validacion;
        
        
        
-    private void Enter(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Enter
-           char e;
-           
-
-                      jTextField1.setFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS,java.util.Collections.EMPTY_SET);
-     
-         char letra;
-         letra = evt.getKeyChar();
-         letra = Character.toUpperCase(letra);
-       if (Character.isLetter(letra) && letra!='K') {
-           evt.consume();
-           
-       }    
-
-        if (validarRut(rutaux) && evt.getKeyCode()!=KeyEvent.VK_TAB && rutaux.length()>5 ){
-            evt.consume();
-        }else{
-            if (Character.isDigit(letra)) {
-            rutaux=rutaux + evt.getKeyChar();
-          //  mensaje.setText(rutaux);
-       
-            }
-        
-        }
-            
-
-        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-                evt.consume();
-
-        }
-               
-        if(evt.getKeyCode()==KeyEvent.VK_TAB && validarRut(rutaux)){
-             // JOptionPane.showMessageDialog(null, "Retorno de carro");
-                
-             jTextField1.setText(rutaux);
-             recupera_datos();
-             jTextField1.setText("");
-             jTextField1.requestFocus();
-             
-             
-        }
-//         if(evt.getKeyCode()==java.awt.event.KeyEvent.VK_ENTER){
-//                  JOptionPane.showMessageDialog(null, "enter","error",JOptionPane.INFORMATION_MESSAGE);
-                  
-//                   recupera_datos();
-//                 }
-        
-       
-   
-        
-    }//GEN-LAST:event_Enter
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         System.exit(0); 
@@ -300,7 +251,7 @@ setDefaultCloseOperation(Principal.EXIT_ON_CLOSE);
        btnSalida.setSelected(false);
        lbleventosel.setText("5");
         jTextField1.requestFocus();
-        
+
                // TODO add your handling code here:
     }//GEN-LAST:event_btnColacionActionPerformed
 
@@ -318,9 +269,88 @@ setDefaultCloseOperation(Principal.EXIT_ON_CLOSE);
         btnSalida.setSelected(true);
         jTextField1.requestFocus();
         lbleventosel.setText("1");
+        jButton2.setVisible(false);
+        
+        try {
+        conexion.getConexion();
+            jLabel1.setText("Seleccione Evento y acerque Cedula de identidad");
+        }catch(Exception e){
+            jLabel1.setText("Error de Conexion");
+        }
         
     }//GEN-LAST:event_open
- 
+
+    private void Enter(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Enter
+        char e;
+
+        jTextField1.setFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS,java.util.Collections.EMPTY_SET);
+
+        char letra;
+        letra = evt.getKeyChar();
+        letra = Character.toUpperCase(letra);
+        if (Character.isLetter(letra) && letra!='K') {
+            evt.consume();
+
+        }
+
+        if (validarRut(rutaux) && evt.getKeyCode()!=KeyEvent.VK_TAB && rutaux.length()>5 ){
+            evt.consume();
+        }else{
+            if (Character.isDigit(letra)) {
+                rutaux=rutaux + evt.getKeyChar();
+                //  mensaje.setText(rutaux);
+
+            }
+
+        }
+
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            evt.consume();
+
+        }
+
+        if(evt.getKeyCode()==KeyEvent.VK_TAB && validarRut(rutaux)){
+            // JOptionPane.showMessageDialog(null, "Retorno de carro");
+
+            jTextField1.setText(rutaux);
+            recupera_datos();
+            jTextField1.setText("");
+            jTextField1.requestFocus();
+
+        }
+        //         if(evt.getKeyCode()==java.awt.event.KeyEvent.VK_ENTER){
+            //                  JOptionPane.showMessageDialog(null, "enter","error",JOptionPane.INFORMATION_MESSAGE);
+
+            //                   recupera_datos();
+            //                 }
+
+    }//GEN-LAST:event_Enter
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+                ResultSet respuesta;
+        try{
+       
+        respuesta=conexion.Consulta("select db_rut,db_id,db_nombre,db_apellido from empleado where db_rut='161545864'");
+        while(respuesta.next()){ 
+    apellido  =respuesta.getString("db_apellido");
+    jLabel1.setText(apellido);
+
+//JOptionPane.showMessageDialog(null,apellido);
+
+    // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+     }catch(Exception e){
+//     JOptionPane.showMessageDialog(null,e.getMessage());
+         jLabel1.setText(e.getMessage());
+
+     }
+
+        
+  }
     public void recupera_datos(){
                 ResultSet respuesta;
          
@@ -328,8 +358,8 @@ setDefaultCloseOperation(Principal.EXIT_ON_CLOSE);
         rut = jTextField1.getText();
         respuesta=conexion.Consulta("select db_rut,db_id,db_nombre,db_apellido from empleado where db_rut like '%" +rut+ "%'");
         while(respuesta.next()){ 
-              lbl_nombre.setText(respuesta.getString("db_nombre"));
-              lbl_id.setText(respuesta.getString("db_id"));
+            //  lbl_nombre.setText(respuesta.getString("db_nombre"));
+              //lbl_id.setText(respuesta.getString("db_id"));
               
 nombre =  respuesta.getString("db_nombre");
 apellido  =respuesta.getString("db_apellido");
@@ -340,9 +370,37 @@ String hash1= "";
 String hash2="";
 hash1= ip + movimiento + date + hour;
 hash2 = hash.getHash(hash1,"MD5");
+String fecha1 = String.format("%02d%02d%02d", año,mes,dia);
+String fecha2 = String.format("%02d/%02d/%02d", dia,mes,año);
+
+String hora1 = String.format("%02d:%02d:%02d", hora, minutos, segundos); 
+
+//JOptionPane.showMessageDialog(null,fecha1);
+
+String insert = "Insert into marcasnew(Codigo,FechaMarca,HoraMarca,ES,Reloj,IpReloj,db_hash) values("+"'"+id+"','"+fecha1+"','"+hora1+"',"+movimiento+",'"+reloj+"','"+ip+"','"+hash2+"')";
+//jTextArea1.setText(insert);
 
 
-JOptionPane.showMessageDialog(null, "Nombre:"+ nombre + " Apellido:" + apellido + "<br> Rut:"+rut+"<br>id:"+id+" <br>fecha:"+date+" Hora:"+hour+"<br>Hash:"+hash2);
+if (conexion.query(insert)){
+ // JOptionPane.showMessageDialog(null,"Registro correcto");
+    try{
+       // imprimir imp = new imprimir();
+        //imp.impresion(nombre,rut,movimiento,fecha2,hora1,empresa,rutempresa,hash2);
+        jLabel1.setText("Registro exitoso");
+                
+    }catch(Exception e){
+        jLabel1.setText(e.getMessage().toString());
+    }
+        
+      jTextField1.setText("");
+      jTextField1.requestFocus();
+      
+    // impresion(String nombre,String rut,String movimiento,String fecha,String hora,String Empresa,String RutE,String hash)  {
+   
+
+}
+
+//JOptionPane.showMessageDialog(null, "Nombre:"+ nombre + " Apellido:" + apellido + "<br> Rut:"+rut+"<br>id:"+id+" <br>fecha:"+date+" Hora:"+hour+"<br>Hash:"+hash2);
 
 
 //
@@ -357,7 +415,7 @@ JOptionPane.showMessageDialog(null, "Nombre:"+ nombre + " Apellido:" + apellido 
         
       
         }catch(Exception e){
-        jLabel1.setText("ERROR");       
+  //      jLabel1.setText("ERROR");       
         }
         
     }
@@ -422,13 +480,11 @@ timer.start();
     private javax.swing.JToggleButton btnEntrada;
     private javax.swing.JToggleButton btnSalida;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel labelreloj;
-    private javax.swing.JLabel lbl_id;
-    private javax.swing.JLabel lbl_nombre;
+    private javax.swing.JLabel lblMensaje;
     private javax.swing.JLabel lbleventosel;
     // End of variables declaration//GEN-END:variables
 }

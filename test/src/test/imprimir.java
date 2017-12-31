@@ -65,19 +65,25 @@ private void setNegro(PrintWriter pw) {
         }
     }
 
-public void impresion()  {
+public  void impresion(String nombre,String rut,String movimiento,String fecha,String hora,String Empresa,String RutE,String hash)  {
 
     try {
         
     
 FileWriter file = new FileWriter("/dev/usb/lp0");
-                   BufferedWriter buffer = new BufferedWriter(file);
+                BufferedWriter buffer = new BufferedWriter(file);
                 PrintWriter ps = new PrintWriter(buffer);
                 setFormato(1, ps);
-                ps.println("Linea 1 ");
-                ps.println("Linea 2 ");
-                ps.println("Linea 3 ");
-                ps.println("Linea 4 ");
+                ps.println("Nombre:" +nombre );
+                ps.println("Rut:"+ rut );
+                ps.println("Movimiento:"+ movimiento);
+                ps.println("Fecha:"+fecha);
+                ps.println("Hora:"+hora);
+                ps.println("Empresa:"+Empresa);
+                ps.println("Rut Emp:"+RutE);
+                ps.println("Hash:"+hash);
+                
+                
                 
                             correr(10, ps);
                 cortar(ps);

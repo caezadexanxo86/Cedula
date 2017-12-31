@@ -10,6 +10,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -20,8 +22,11 @@ public class conexion {
     public static Connection getConexion(){
         
     
-    String url ="jdbc:sqlserver://192.168.0.2\\desarrollo:1433;databaseName=cab_lirquen";
-    try {
+   // String url ="jdbc:sqlserver://192.168.0.2\\desarrollo:1433;databaseName=cab_lirquen;SelectMethod=cursor;SendStringParametersAsUnicode=false";
+   
+   String url ="jdbc:sqlserver://192.168.0.2\\desarrollo:1433;databaseName=cab_lirquen;SelectMethod=cursor;SendStringParametersAsUnicode=false";
+   
+   try {
       Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
          
         
@@ -38,23 +43,35 @@ public class conexion {
         return contacto;
     }
     
-    public static ResultSet Consulta(String consulta){
+    public static ResultSet Consulta(String consulta) throws SQLException{
+       
         Connection con = getConexion();
-        
+        ResultSet respuesta;
         Statement declara;
         try{
             declara = con.createStatement();
-            ResultSet respuesta= declara.executeQuery(consulta);
-            return respuesta;
-        }catch (SQLException e){
+             respuesta= declara.executeQuery(consulta);
+              
+                    }catch (SQLException e){
          JOptionPane.showMessageDialog(null, "Error Resulset","error",JOptionPane.ERROR_MESSAGE);
-   
+                return null;
+    
+        
+        } 
+        
+         return respuesta;
+           
+        
+    
+    
+    
+    }
+    public static void cierra(){
+        try {
+            contacto.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(conexion.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return null;
-    
-    
-    
-    
     }
     
     public static boolean query(String consulta){
@@ -65,6 +82,7 @@ public class conexion {
         try{
             declara = con.createStatement();
             resul=declara.execute(consulta);
+            con.close();
             
         }catch (SQLException e){
          JOptionPane.showMessageDialog(null, "Error Resulset","error",JOptionPane.ERROR_MESSAGE);
