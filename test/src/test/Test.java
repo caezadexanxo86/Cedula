@@ -10,7 +10,9 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
-
+import java.awt.image.BufferedImage;
+import java.awt.*;
+import javax.swing.JFrame;
 /**
  *
  * @author pi
@@ -33,8 +35,15 @@ public class Test {
           Principal v= new Principal();
     //        ventana v = new ventana();
            v.setLayout(null);
-            v.setVisible(true);
+           
+         
 v.setExtendedState(6);
+v.setCursor(v.getToolkit().createCustomCursor(new BufferedImage(3, 3, BufferedImage.TYPE_INT_ARGB), new Point(0, 0),"null"));
+
+v.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+v.setResizable(false);
+v.setVisible(true);
+   
    } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
            JOptionPane.showMessageDialog(null, "No Entra"); 
         }

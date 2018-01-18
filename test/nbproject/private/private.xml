@@ -3,13 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Respaldo%20GITHUB/Java/cedula/Cedula/test/src/test/variableglobal.java</file>
-            <file>file:/D:/Respaldo%20GITHUB/Java/cedula/Cedula/test/src/test/leer.java</file>
-            <file>file:/D:/Respaldo%20GITHUB/Java/cedula/Cedula/test/src/test/Principal.java</file>
-            <file>file:/D:/Respaldo%20GITHUB/Java/cedula/Cedula/test/src/test/Test.java</file>
-            <file>file:/D:/Respaldo%20GITHUB/Java/cedula/Cedula/test/src/test/conexion.java</file>
-            <file>file:/D:/Respaldo%20GITHUB/Java/cedula/Cedula/test/src/test/hash.java</file>
-            <file>file:/D:/Respaldo%20GITHUB/Java/cedula/Cedula/test/src/test/ventana.java</file>
+            <file>file:/home/pi/Cedula/test/src/test/imprimir.java</file>
+            <file>file:/home/pi/Cedula/test/src/test/LeeCedula.java</file>
+            <file>file:/home/pi/Cedula/test/src/test/Test.java</file>
+            <file>file:/home/pi/Cedula/test/src/test/ventana.java</file>
+            <file>file:/home/pi/Cedula/test/src/test/Principal.java</file>
+            <file>file:/home/pi/Cedula/test/src/test/LeerFichero.java</file>
+            <file>file:/home/pi/Cedula/test/src/test/conexion.java</file>
         </group>
     </open-files>
 </project-private>

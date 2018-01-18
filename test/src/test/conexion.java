@@ -20,11 +20,24 @@ import java.util.logging.Logger;
 public class conexion {
     static Connection contacto = null;
     public static Connection getConexion(){
-        
+    String Archivo ="/home/pi/Cedula/configuracion.txt";    
+    String servidor = LeerFichero.RetornaValor(Archivo,0);
+    String puerto = LeerFichero.RetornaValor(Archivo,1);
+    String dbname = LeerFichero.RetornaValor(Archivo,2);
+    String usuario = LeerFichero.RetornaValor(Archivo,3);
+    String clave = LeerFichero.RetornaValor(Archivo,4);
+    String conPuerto = LeerFichero.RetornaValor(Archivo,5);
     
    // String url ="jdbc:sqlserver://192.168.0.2\\desarrollo:1433;databaseName=cab_lirquen;SelectMethod=cursor;SendStringParametersAsUnicode=false";
-   
-   String url ="jdbc:sqlserver://192.168.0.2\\desarrollo:1433;databaseName=cab_lirquen;SelectMethod=cursor;SendStringParametersAsUnicode=false";
+   String url = "";
+   if (conPuerto.equals("S")){
+     url ="jdbc:sqlserver://"+servidor+":"+puerto+";databaseName="+dbname+";SelectMethod=cursor;SendStringParametersAsUnicode=false";
+  
+   }else {
+     url ="jdbc:sqlserver://"+servidor+";databaseName="+dbname+";SelectMethod=cursor;SendStringParametersAsUnicode=false";
+    
+   }
+       
    
    try {
       Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
@@ -35,7 +48,8 @@ public class conexion {
     JOptionPane.showMessageDialog(null, "Error driver","error",JOptionPane.ERROR_MESSAGE);
     }
     try{
-        contacto = DriverManager.getConnection(url,"user_mycab","sopcab09");
+       // contacto = DriverManager.getConnection(url,"user_mycab","sopcab09");
+       contacto = DriverManager.getConnection(url,usuario,clave);
     }catch (SQLException e){
          JOptionPane.showMessageDialog(null, "Error driver","error",JOptionPane.ERROR_MESSAGE);
    
@@ -50,7 +64,7 @@ public class conexion {
         Statement declara;
         try{
             declara = con.createStatement();
-             respuesta= declara.executeQuery(consulta);
+             respuesta=declara.executeQuery(consulta);
               
                     }catch (SQLException e){
          JOptionPane.showMessageDialog(null, "Error Resulset","error",JOptionPane.ERROR_MESSAGE);
@@ -81,8 +95,9 @@ public class conexion {
         
         try{
             declara = con.createStatement();
-            resul=declara.execute(consulta);
-            con.close();
+            declara.execute(consulta);
+            resul=true;
+            
             
         }catch (SQLException e){
          JOptionPane.showMessageDialog(null, "Error Resulset","error",JOptionPane.ERROR_MESSAGE);

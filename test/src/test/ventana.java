@@ -5,7 +5,7 @@
  */
 package test;
 
-import com.sun.glass.events.KeyEvent;
+import java.awt.event.KeyEvent;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -199,7 +199,7 @@ System.out.println(e);
     private void enter(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_enter
         // TODO add your handling code here:
         if(evt.getKeyCode()== KeyEvent.VK_ENTER){
-            recupera();
+           jLabel1.setText(jTextField1.getText());
         }
     }//GEN-LAST:event_enter
 

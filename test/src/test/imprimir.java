@@ -73,7 +73,7 @@ public  void impresion(String nombre,String rut,String movimiento,String fecha,S
 FileWriter file = new FileWriter("/dev/usb/lp0");
                 BufferedWriter buffer = new BufferedWriter(file);
                 PrintWriter ps = new PrintWriter(buffer);
-                setFormato(1, ps);
+                setFormato(5, ps);
                 ps.println("Nombre:" +nombre );
                 ps.println("Rut:"+ rut );
                 ps.println("Movimiento:"+ movimiento);

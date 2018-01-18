@@ -6,7 +6,7 @@ import java.awt.event.*;
 
 class Impresora
 {
-Font fuente = new Font("Dialog", Font.PLAIN, 10);
+Font fuente = new Font("Dialog", Font.PLAIN, 12);
 PrintJob pj;	
 Graphics pagina;
 
